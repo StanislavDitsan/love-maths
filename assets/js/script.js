@@ -16,6 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Press enter to submit their answer rather than clicking on the button.
+    document.getElementById("answer-box").addEventListener("keydown", function(event){
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    })
+
     runGame("addition");
 
 });
@@ -26,6 +33,20 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+
+/**
+ * So each time our run game function is called it will set the value  
+   of our answer box to an empty string in effect, 
+   it will empty it of whatever was there before.  
+ * 
+ */
+    document.getElementById("answer-box").value = "";
+
+
+/** Each time the run game function is called  
+    the answer box will again gain the focus. So the cursor 
+    will be ready there for us to type in our answer. */
+    document.getElementById("answer-box").focus();
 
     // Creates two random numbers between 1 and 25
 
