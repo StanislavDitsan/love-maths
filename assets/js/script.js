@@ -37,6 +37,8 @@ function runGame(gameType) {
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -75,7 +77,9 @@ function calculateCorrectAnswer() {
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
     } else if (operator === "x") {
-        return [operand1 * operand2, "multiply"]
+        return [operand1 * operand2, "multiply"];
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -111,7 +115,13 @@ function displayAdditionQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
+/**In our case the question is, is operand 1 bigger than operand 2? If so, return operand 1.  
+And if not, the else part which comes  after the colon is to return operand 2. */
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operator').textContent = "-";
+
 
 }
 
